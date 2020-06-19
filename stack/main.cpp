@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-  Stack s(3);
+  Stack<int> s(3);
   s.push(1);
   s.push(2);
   s.push(3);
@@ -15,7 +15,11 @@ int main()
   cout << s.pop() << endl;
   cout << s.pop() << endl;
 
-  cout << s.pop() << endl; // throws an error
+  Stack<double> s2(3);
 
+  s2.push(3.5);
+
+  cout << s2.pop() << endl;
+  cout << s2.pop();
   return 0;
 }

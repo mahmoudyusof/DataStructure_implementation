@@ -1,18 +1,21 @@
 #include "mine.h"
 
-Stack::Stack(int size)
+template <typename T>
+Stack<T>::Stack(int size)
 {
-  st = new int[size];
+  st = new T[size];
   s = size;
   top = -1;
 }
 
-Stack::~Stack()
+template <typename T>
+Stack<T>::~Stack()
 {
   delete st;
 }
 
-void Stack::push(int value)
+template <typename T>
+void Stack<T>::push(T value)
 {
   if (isFull())
   {
@@ -25,28 +28,30 @@ void Stack::push(int value)
   }
 }
 
-int Stack::pop()
+template <typename T>
+T Stack<T>::pop()
 {
   if (isEmpty())
   {
     throw "Stack Underflow Error";
-    return 0;
   }
   else
   {
-    int popVal = st[top];
+    T popVal = st[top];
     st[top] = 0;
     top--;
     return popVal;
   }
 }
 
-int Stack::peak()
+template <typename T>
+T Stack<T>::peak()
 {
   return st[top];
 }
 
-bool Stack::isEmpty()
+template <typename T>
+bool Stack<T>::isEmpty()
 {
   if (top == -1)
     return true;
@@ -54,7 +59,8 @@ bool Stack::isEmpty()
     return false;
 }
 
-bool Stack::isFull()
+template <typename T>
+bool Stack<T>::isFull()
 {
   if (top == s - 1)
     return true;
