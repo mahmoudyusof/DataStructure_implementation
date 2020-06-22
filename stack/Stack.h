@@ -16,7 +16,7 @@ public:
 
   ~Stack()
   {
-    delete st;
+    delete[] st;
   }
 
   void push(T value)
