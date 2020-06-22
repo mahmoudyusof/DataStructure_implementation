@@ -1,24 +1,26 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
+template <typename T>
 class Queue
 {
 private:
   int front = -1;
   int back = -1;
   int size;
-  int *arr;
+  T *arr;
 
 public:
   Queue(int s)
   {
     size = s;
-    arr = new int[size];
+    arr = new T[size];
   }
 
   ~Queue()
   {
-    delete arr;
+    delete[] arr;
   }
 
   bool isEmpty()
@@ -34,7 +36,7 @@ public:
     return (back >= size - 1);
   }
 
-  void enqueue(int val)
+  void enqueue(T val)
   {
     if (isFull())
       throw "Queue is full";
@@ -46,7 +48,7 @@ public:
     arr[back] = val;
   }
 
-  int dequeue()
+  T dequeue()
   {
     if (isEmpty())
       throw "Queue is empty";
@@ -59,7 +61,7 @@ public:
     }
     else
     {
-      int x = arr[front];
+      T x = arr[front];
       for (int i = 0; i < back; i++)
       {
         arr[i] = arr[i + 1];
