@@ -1,3 +1,6 @@
+#include <iostream>
+using namespace std;
+
 template <typename T>
 struct NODE
 {
@@ -14,12 +17,23 @@ private:
   NODE<T> *tail;
 
 public:
-  int length;
+  int length = 0;
   DLList()
   {
     head = NULL;
     tail = NULL;
     length = 0;
+  }
+
+  DLList(T *arr, int len)
+  {
+    head = NULL;
+    tail = NULL;
+    length = 0;
+    for (int i = 0; i < len; i++)
+    {
+      push(arr[i]);
+    }
   }
 
   void push(T val)
@@ -44,15 +58,30 @@ public:
 
   T &operator[](int i)
   {
-    NODE<T> *p = head;
-    int count = 0;
-    while (p != NULL)
+    if (i >= 0)
     {
-      if (count == i)
-        return (p->data);
-      count++;
-      p = p->next;
+      NODE<T> *p = head;
+      int count = 0;
+      while (p != NULL)
+      {
+        if (count == i)
+          return (p->data);
+        count++;
+        p = p->next;
+      }
+      throw "list index out of range";
     }
-    throw "ASShole";
+    else
+    {
+      NODE<T> *p = tail;
+      int count = -1;
+      while (p != NULL)
+      {
+        if (count == i)
+          return p->data;
+        count--;
+        p = p->prev;
+      }
+    }
   }
 };
