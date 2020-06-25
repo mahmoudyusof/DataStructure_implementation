@@ -14,7 +14,7 @@ void through(Node *r)
 int main()
 {
 
-  Node *root = new Node(5);
+  Node<int> *root = new Node<int>(5);
   for (int i = 0; i < 10; i++)
   {
     if (i == 5)

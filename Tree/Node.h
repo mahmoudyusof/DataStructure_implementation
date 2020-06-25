@@ -1,10 +1,12 @@
+
+template <typename T>
 class Node
 {
 public:
   Node *left;
   Node *right;
-  int value;
-  Node(int val)
+  T value;
+  Node(T val)
   {
     value = val;
     right = NULL;
@@ -17,7 +19,7 @@ public:
     delete[] right;
   }
 
-  void insert(int val)
+  void insert(T val)
   {
     if (val <= value)
     {
