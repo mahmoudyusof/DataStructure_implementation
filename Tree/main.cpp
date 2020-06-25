@@ -2,7 +2,8 @@
 #include "Node.h"
 using namespace std;
 
-void through(Node *r)
+template <typename T>
+void through(Node<T> *r)
 {
   cout << r->value << endl;
   if (r->right != NULL)
@@ -22,7 +23,7 @@ int main()
     root->insert(i);
   }
 
-  through(root);
+  through<int>(root);
 
   return 0;
 }
